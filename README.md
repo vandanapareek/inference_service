@@ -1,7 +1,11 @@
 # SMS Spam Classifier (FastAPI Demo)
 
-This is a simple **SMS Spam Classifier** built with **scikit-learn** and served using **FastAPI**.  
-It uses a trained pipeline (`TfidfVectorizer + LogisticRegression`) to classify text messages as **SPAM** or **HAM (not spam)**.
+A simple machine learning project demonstrating **end-to-end model deployment**:
+
+- Trained an SMS spam detection model using **scikit-learn** (TF-IDF + Logistic Regression).
+- Packaged model with **joblib** and exposed via a **FastAPI** inference API.
+- Deployed live on **Render free tier**, with token-authenticated REST endpoint and demo UI.
+
 
 **Live Demo**: [https://inference-service.onrender.com/](https://inference-service.onrender.com/)  
 Paste a message and click **Classify** to see predictions.
