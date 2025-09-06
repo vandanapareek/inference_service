@@ -12,7 +12,7 @@ Paste a message and click **Classify** to see predictions.
 
 Try this sample SMS in the demo page:
 
-WINNER! You have won a $1000 Walmart gift card. Click http://bit.ly/fake
+```WINNER! You have won a $1000 Walmart gift card. Click http://bit.ly/fake```
 
 
 **Expected Result:**
