@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Spam Classifier Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        #out {
+            margin-top: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Spam Classifier Demo</h2>
+    <p>Paste text and click <strong>Classify</strong>.</p>
+    <textarea id="text" rows="6">WINNER! You have won a prize. Click http://bit.ly/fake</textarea><br /><br />
+    <button onclick="send()">Classify</button>
+    <p id="out"></p>
+    <script>
+        async function send() {
+            const text = document.getElementById('text').value;
+            const out = document.getElementById('out');
+            out.innerText = "Calling prediction...";
+            try {
+                const res = await fetch('/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        // For local demo we use the same default token as the server:
+                        'x-api-key': 'insecure-demo-token'
+                    },
+                    body: JSON.stringify({ text })
+                });
+                if (!res.ok) {
+                    const e = await res.json();
+                    out.innerText = "Error: " + (e.detail || res.statusText);
+                    return;
+                }
+                const data = await res.json();
+                out.innerText = `Prediction: ${data.prediction} ${data.prob ? " (prob: " + data.prob.toFixed(2) + ")" : ""}`;
+            } catch (err) {
+                out.innerText = "Request failed: " + err;
+            }
+        }
+    </script>
+</body>
+
+</html>
