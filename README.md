@@ -21,5 +21,5 @@ WINNER! You have won a $1000 Walmart gift card. Click http://bit.ly/fake
   "prediction": "SPAM",
   "prob": 0.85
 }
-
+```
 (Your probability may differ slightly, but it should classify as SPAM.)
